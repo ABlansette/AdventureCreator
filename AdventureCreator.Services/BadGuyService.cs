@@ -25,7 +25,7 @@ namespace AdventureCreator.Services
                     Name = model.Name,
                     Level = model.Level,
                     Class = model.Class,
-                    Planet = model.Planet,
+                    PlanetId = model.PlanetId,
                     UserId = _userId
                 };
                 ctx.BadGuys.Add(newBadGuy);
@@ -87,7 +87,7 @@ namespace AdventureCreator.Services
                 badGuyEntity.Class = model.Class;
                 badGuyEntity.IsBoss = model.IsBoss;
                 badGuyEntity.Level = model.Level;
-                badGuyEntity.Planet = model.Planet;
+                badGuyEntity.PlanetId = model.PlanetId;
                 return ctx.SaveChanges() == 1;
             }
         }

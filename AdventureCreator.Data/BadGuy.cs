@@ -39,6 +39,8 @@ namespace AdventureCreator.Data
 
         [Required]
         public bool IsBoss { get; set; }
-    }
+
+        public string PlanetName => Planet.Name;
+        }
     public enum BadGuySpecies { Goblin, Ghost, Alein, SpaceMonkey, Skeleton, TreeMonster }
 }

@@ -20,7 +20,7 @@ namespace AdventurerCreator.Models.Adventurer
         public int Level { get; set; }
 
         [Required]
-        public virtual Planet Planet { get; set; }
+        public int  PlanetId { get; set; }
 
         [Required]
         public bool IsBoss { get; set; }

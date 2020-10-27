@@ -14,6 +14,7 @@ namespace AdventurerCreator.Models.Adventurer
         public BadGuySpecies Class { get; set; }
         public int Level { get; set; }
         public bool IsBoss { get; set; }
+        public int PlanetId { get; set; }
         public virtual Planet Planet { get; set; }
     }
 }
