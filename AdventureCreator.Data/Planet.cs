@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace AdventureCreator.Data
         public string Name { get; set; }
         public string PrimaryColor { get; set; }
         public string SecondaryColor { get; set; }
-        public virtual BadGuy BadGuys { get; set; }
+        public ICollection<BadGuy> BadGuys { get; set; }
 
         /*public int NumOfBadGuys
         {

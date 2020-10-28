@@ -26,13 +26,19 @@ namespace AdventureCreator.Controllers
             var model = service.PlanetList();
             return View(model);
         }
+        public ActionResult Create()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(PlanetCreate model)
         {
             if (!ModelState.IsValid) return View(model);
 
             var service = CreatePlanetService();
-            service.PlanetCreate(model);
+
             if(service.PlanetCreate(model))
             {
                 TempData["SaveResult"] = "Your Planey was Succesfully Created";
@@ -88,7 +94,7 @@ namespace AdventureCreator.Controllers
         {
             var service = CreatePlanetService();
             var model = service.GetPlanetById(id);
-            if(service.DeletePlanet(model.PlanetId) && model.BadGuys.PlanetId != model.PlanetId)
+            if(service.DeletePlanet(model.PlanetId) && model.BadGuys == null)
             {
                 TempData["SaveResult"] = "Your Planet Has Been Deleted";
                 return RedirectToAction("Index");

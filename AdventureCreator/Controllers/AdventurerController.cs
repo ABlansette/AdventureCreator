@@ -26,7 +26,12 @@ namespace AdventureCreator.Controllers
             var model = service.AdventurerList();
             return View(model);
         }
-        
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
         public ActionResult Create(AdventurerCreate model)
         {
             if (!ModelState.IsValid) return View(model);

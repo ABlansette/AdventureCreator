@@ -45,7 +45,7 @@ namespace AdventureCreator.Services
                     {
                         BadGuyId = item.BadGuyId,
                         Name = item.Name,
-                        Planet = item.Planet,
+                        PlanetName = item.PlanetName,
                         Class = item.Class,
                         Level = item.Level,
                         IsBoss = item.IsBoss

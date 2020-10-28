@@ -27,6 +27,11 @@ namespace AdventureCreator.Controllers
             return View(model);
         }
 
+        public ActionResult Create()
+        {
+            return View();
+        }
+
         public ActionResult Create(BadGuyCreate model)
         {
             if (!ModelState.IsValid) return View(model);

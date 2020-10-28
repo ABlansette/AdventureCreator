@@ -22,10 +22,26 @@ namespace AdventureCreator.Data
         public int Level { get; set; }
 
         [Required]
-        public double Health => Level * 200;
+        public double Health 
+        {
+            get
+            {
+                if (IsBoss)
+                    return Level * 500;
+                else return Level * 200;
+            }
+        }
 
         [Required]
-        public double Damage => Level * 19;
+        public double Damage
+        {
+            get
+            {
+                if (IsBoss)
+                    return Level* 30;
+                else return Level* 19;
+            }
+        }
 
         [Required]
         public int XpDropped => Level * 10;

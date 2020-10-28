@@ -1,6 +1,7 @@
 ﻿using AdventureCreator.Data;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +19,8 @@ namespace AdventurerCreator.Models.Adventurer
         public int XpDropped { get; set; }
         public bool IsBoss { get; set; }
         public string PlanetName { get; set; }
+
+        [ForeignKey(nameof(Planet))]
         public int PlanetId { get; set; }
         public BadGuySpecies Class { get; set; }
         public virtual Planet Planet { get; set; }

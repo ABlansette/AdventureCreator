@@ -13,7 +13,7 @@ namespace AdventurerCreator.Models.Adventurer
         public string Name { get; set; }
         public string PrimaryColor { get; set; }
         public string SecondaryColor { get; set; }
-        public virtual BadGuy BadGuys { get; set; }
+        public ICollection<BadGuy> BadGuys { get; set; }
 
     }
 }

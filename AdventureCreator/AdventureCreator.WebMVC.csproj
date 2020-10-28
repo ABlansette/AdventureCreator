@@ -238,11 +238,20 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\BadGuy\Index.cshtml" />
+    <Content Include="Views\BadGuy\Create.cshtml" />
+    <Content Include="Views\BadGuy\Details.cshtml" />
+    <Content Include="Views\BadGuy\Edit.cshtml" />
+    <Content Include="Views\Adventurer\Create.cshtml" />
+    <Content Include="Views\Adventurer\Index.cshtml" />
+    <Content Include="Views\Adventurer\Edit.cshtml" />
+    <Content Include="Views\Adventurer\Details.cshtml" />
+    <Content Include="Views\Planet\Index.cshtml" />
+    <Content Include="Views\Planet\Create.cshtml" />
+    <Content Include="Views\Planet\Edit.cshtml" />
+    <Content Include="Views\Planet\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Adventurer\" />
-    <Folder Include="Views\Planste\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

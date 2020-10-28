@@ -17,6 +17,6 @@ namespace AdventurerCreator.Models.Adventurer
 
         //[Display("Boss")]
         public bool IsBoss { get; set; }
-        public virtual Planet Planet { get; set; }
+        public string PlanetName { get; set; }
     }
 }
