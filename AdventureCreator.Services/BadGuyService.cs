@@ -50,6 +50,7 @@ namespace AdventureCreator.Services
                         Level = item.Level,
                         IsBoss = item.IsBoss
                     };
+                    badGuyList.Add(badGuyListItem);
                 }
                 return badGuyList;
             }

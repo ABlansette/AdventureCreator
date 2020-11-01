@@ -13,7 +13,6 @@ namespace AdventurerCreator.Models.Adventurer
         public string Name { get; set; }
         public int Level { get; set; }
         public Species Class { get; set; }
-        public virtual Planet Planet { get; set; }
         public string PlanetName { get; set; }
     }
 }

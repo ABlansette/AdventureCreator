@@ -32,12 +32,14 @@ namespace AdventureCreator.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(BadGuyCreate model)
         {
             if (!ModelState.IsValid) return View(model);
 
             var service = CreateBadGuyService();
-            service.BadGuyCreate(model);
+
             if (service.BadGuyCreate(model))
             {
                 TempData["SaveResult"] = "Your BadGuy was Succesfully Created";
@@ -72,10 +74,10 @@ namespace AdventureCreator.Controllers
         {
             if (!ModelState.IsValid) return View(model);
             var service = CreateBadGuyService();
-            service.UpdateBadGuy(model);
             if (service.UpdateBadGuy(model))
             {
                 TempData["SaveResult"] = "Your BadGuy was Succesfully Updated";
+                service.UpdateBadGuy(model);
                 return RedirectToAction("Index");
             }
             ModelState.AddModelError("", "Your BadGuy Was Not Updated");
@@ -90,9 +92,18 @@ namespace AdventureCreator.Controllers
             return View(model);
         }
 
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateBadGuyService();
+            var model = svc.GetBadGuyById(id);
+
+            return View(model);
+        }
+
+        [ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult Delete(int id)
+        public ActionResult DeleteBadGuy(int id)
         {
             var service = CreateBadGuyService();
             var model = service.GetBadGuyById(id);

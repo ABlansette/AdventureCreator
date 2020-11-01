@@ -24,8 +24,8 @@ namespace AdventureCreator.Services
                 var newPlanet = new Planet()
                 {
                     Name = model.Name,
-                    PrimaryColor = model.PrimaryColor,
-                    SecondaryColor = model.SecondaryColor,
+                    PrimaryColor = model.PrimaryColor.ToLower(),
+                    SecondaryColor = model.SecondaryColor.ToLower(),
                     UserId = _userId
                 };
                 ctx.Planets.Add(newPlanet);
@@ -35,7 +35,7 @@ namespace AdventureCreator.Services
 
         public List<PlanetListItem> PlanetList()
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var planetEntity = ctx.Planets;
                 var planetList = new List<PlanetListItem>();
@@ -49,31 +49,60 @@ namespace AdventureCreator.Services
                         PrimaryColor = item.PrimaryColor,
                         SecondaryColor = item.SecondaryColor
                     };
+                    planetList.Add(planetListItem);
                 }
+
                 return planetList;
             }
         }
+        public List<BadGuyListItem> PlanetBadGuyList(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var badguyEntity = ctx.BadGuys;
+                var badGuyList = new List<BadGuyListItem>();
+                foreach (var item in badguyEntity)
+                {
+                    if (item.PlanetId == id)
+                    {
+                        var badGuyListItem = new BadGuyListItem()
+                        {
+                            BadGuyId = item.BadGuyId,
+                            Name = item.Name,
+                            PlanetName = item.Planet.Name,
+                            Class = item.Class,
+                            IsBoss = item.IsBoss,
+                            Level = item.Level
+                        };
+                        badGuyList.Add(badGuyListItem);
+                    }
+                }
+
+                return badGuyList;
+            }
+        }
+
 
         public PlanetDetails GetPlanetById(int id)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var planetEntity = ctx.Planets
                     .Single(e => e.PlanetId == id && e.UserId == _userId);
                 return new PlanetDetails
-                { 
+                {
                     PlanetId = planetEntity.PlanetId,
                     Name = planetEntity.Name,
                     PrimaryColor = planetEntity.PrimaryColor,
                     SecondaryColor = planetEntity.SecondaryColor,
                     BadGuys = planetEntity.BadGuys
-                };  
+                };
             }
         }
 
         public bool UpdatePlanet(PlanetEdit model)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var planetEntity = ctx.Planets
                         .Single(e => e.PlanetId == model.PlanetId && _userId == e.UserId);

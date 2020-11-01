@@ -24,6 +24,10 @@ namespace AdventureCreator.Services
                 {
                     Name = model.Name,
                     Class = model.Class,
+                    Level = 1,
+                    PlanetId = 1,
+                    Weapon = model.WeaponChoice(),
+                    Xp = 0,
                     OwnerId = _userId
                 };
                 ctx.Adventurers.Add(newAdventurer);
@@ -43,11 +47,11 @@ namespace AdventureCreator.Services
                     {
                         AdventurerId = item.AdventurerId,
                         Name = item.Name,
-                        Planet = item.Planet,
-                        PlanetName = item.Planet.Name,
                         Class = item.Class,
                         Level = item.Level,
+                        PlanetName = item.Planet.Name
                     };
+                    adventurerList.Add(adventurerListItem);
                 }
                 return adventurerList;
             }
@@ -67,7 +71,8 @@ namespace AdventureCreator.Services
                     Health = adventurerEntity.Health,
                     Level = adventurerEntity.Level,
                     PlanetName = adventurerEntity.Planet.Name,
-                    Class = adventurerEntity.Class
+                    Class = adventurerEntity.Class,
+                    Weapon = adventurerEntity.WeaponChoice()
                 };
             }
         }

@@ -32,12 +32,14 @@ namespace AdventureCreator.Controllers
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(AdventurerCreate model)
         {
             if (!ModelState.IsValid) return View(model);
 
             var service = CreateAdventurerService();
-            service.AdventurerCreate(model);
+
             if (service.AdventurerCreate(model))
             {
                 TempData["SaveResult"] = "Your Adventurer was Succesfully Created";
@@ -68,10 +70,11 @@ namespace AdventureCreator.Controllers
         {
             if (!ModelState.IsValid) return View(model);
             var service = CreateAdventurerService();
-            service.UpdateAdventurer(model);
+
             if (service.UpdateAdventurer(model))
             {
                 TempData["SaveResult"] = "Your Adventurer was Succesfully Updated";
+                service.UpdateAdventurer(model);
                 return RedirectToAction("Index");
             }
             ModelState.AddModelError("", "Your Adventurer Was Not Updated");
@@ -86,9 +89,29 @@ namespace AdventureCreator.Controllers
             return View(model);
         }
 
+        public ActionResult Delete(int id)
+        {
+            var svc = CreateAdventurerService();
+            var edit = svc.GetAdventurerById(id);
+            var model = new AdventurerDetails
+            {
+                Name = edit.Name,
+                Class = edit.Class,
+                Damage = edit.Damage,
+                Health = edit.Health,
+                Level = edit.Level,
+                Planet = edit.Planet,
+                PlanetName = edit.PlanetName,
+                Weapon = edit.Weapon,
+                AdventurerId = edit.AdventurerId
+            };
+            return View(model);
+        }
+
+        [ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult Delete(int id)
+        public ActionResult DeleteAdventurer(int id)
         {
             var service = CreateAdventurerService();
             var model = service.GetAdventurerById(id);
@@ -99,7 +122,6 @@ namespace AdventureCreator.Controllers
             }
             ModelState.AddModelError("", "Your Adventurer Could not be deleted");
             return View(model);
-
         }
     }
 }

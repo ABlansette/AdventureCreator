@@ -1,10 +1,4 @@
-﻿@model IEnumerable<AdventurerCreator.Models.Adventurer.AdventurerListItem>
-
-@{
-    ViewBag.Title = "Index";
-}
-
-<h2>Index</h2>
+﻿@model IEnumerable<AdventurerCreator.Models.Adventurer.BadGuyListItem>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,13 +6,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.AdventurerId)
+            @Html.DisplayNameFor(model => model.BadGuyId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Level)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsBoss)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PlanetName)
@@ -30,7 +27,7 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.AdventurerId)
+                @Html.DisplayFor(modelItem => item.BadGuyId)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -39,16 +36,18 @@
                 @Html.DisplayFor(modelItem => item.Level)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.IsBoss)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.PlanetName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.AdventurerId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.AdventurerId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.AdventurerId })
+                @Html.ActionLink("Edit", "../BadGuy/Edit", new { id=item.BadGuyId }) |
+                @Html.ActionLink("Details", "../BadGuy/Details", new { id = item.BadGuyId }) |
+                @Html.ActionLink("Delete", "../BadGuy/Delete", new { id = item.BadGuyId })
             </td>
         </tr>
     }
 
 </table>
-<a href="../Home/Settings" class="btn btn-primary btn-lg">Back</a>
-
+<a href="../Planet/Index" class="btn btn-primary btn-lg">Back</a>

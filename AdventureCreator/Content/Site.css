@@ -22,3 +22,14 @@ select,
 textarea {
     max-width: 280px;
 }
+
+html{
+    background-image: url(../Assets/wallpaperflare.com_wallpaper.jpg);
+    justify-content:center;
+}
+
+body{
+    margin-top: 25vh;
+    background-color: rgb(20, 20, 20);
+}
+

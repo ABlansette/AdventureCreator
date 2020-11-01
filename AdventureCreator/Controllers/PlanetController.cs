@@ -26,6 +26,12 @@ namespace AdventureCreator.Controllers
             var model = service.PlanetList();
             return View(model);
         }
+        public ActionResult BadGuyList(int id)
+        {
+            var service = CreatePlanetService();
+            var model = service.PlanetBadGuyList(id);
+            return View(model);
+        }
         public ActionResult Create()
         {
             return View();
@@ -88,9 +94,18 @@ namespace AdventureCreator.Controllers
             return View(model);
         }
 
+        public ActionResult Delete(int id)
+        {
+            var svc = CreatePlanetService();
+            var model = svc.GetPlanetById(id);
+
+            return View(model);
+        }
+
+        [ActionName("Delete")]
         [ValidateAntiForgeryToken]
         [HttpPost]
-        public ActionResult Delete(int id)
+        public ActionResult DeletePlanet(int id)
         {
             var service = CreatePlanetService();
             var model = service.GetPlanetById(id);

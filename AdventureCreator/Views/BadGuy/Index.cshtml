@@ -23,29 +23,36 @@
         <th>
             @Html.DisplayNameFor(model => model.IsBoss)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlanetName)
+        </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.BadGuyId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Level)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.IsBoss)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BadGuyId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Level)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsBoss)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.BadGuyId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.BadGuyId }) |
+                @Html.ActionLink("Delete", "Delete", new {id= item.BadGuyId})
+            </td>
+        </tr>
+    }
 
 </table>
+
+<a href="../Home/Settings" class="btn btn-primary btn-lg">Back</a>
+
